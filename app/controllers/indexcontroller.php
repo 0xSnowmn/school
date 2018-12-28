@@ -5,6 +5,12 @@ class IndexController extends AbstractController
 {
     public function defaultAction()
     {
-        echo 'hello From Index';
+        $this->view();
+    }
+
+    public function addAction()
+    {
+        echo 'add';
+        $this->view();
     }
 }

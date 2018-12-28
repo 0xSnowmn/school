@@ -10,8 +10,11 @@ class FrontController
     protected $_action = 'default';
     protected $_params = [];
 
-    public function __construct()
+    private $tpl;
+
+    public function __construct(Template $tpl)
     {
+        $this->tpl = $tpl;
         $this->url();
     }
 
@@ -42,6 +45,7 @@ class FrontController
         }
 
         $controller = new $controlelrClassName();
+        $controller->setTemplate($this->tpl);
         $controller->setController($this->_controller);
         $controller->setAction($this->_action);
         $controller->setParams($this->_params);
