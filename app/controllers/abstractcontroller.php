@@ -10,8 +10,8 @@ class AbstractController
     private $_action;
     private $_params;
 
-    private $data = [];
-    private $_tpl;
+    protected $_data = [];
+    protected $_tpl;
 
 
     public function setController($controller)
@@ -35,13 +35,13 @@ class AbstractController
 
     public function view()
     {
-        extract($this->data);
         $viewPath = VIEW_PATH . $this->_controller . '/' . $this->_action . '.v.php';
         if ($this->_action == FrontController::NOT_FOUND_ACTION || !file_exists($viewPath)) {
             $viewPath = VIEW_PATH . 'notfound/noview.v.php';
         }
         $this->_tpl->setView($viewPath);
-        $this->_tpl->setAppData($this->data);
+        $this->_tpl->setAppData($this->_data);
+        extract($this->_data);
         $this->_tpl->render();
     }
 }

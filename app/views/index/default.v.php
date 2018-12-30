@@ -1,4 +1,3 @@
- <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-3 col-sm-6">
@@ -14,7 +13,7 @@
                                         <div class="numbers">
                                             <p>Capacity</p>
                                             105GB
-                                            <?= $test ?>
+                                            <? ?>
                                         </div>
                                     </div>
                                 </div>

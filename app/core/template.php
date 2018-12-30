@@ -7,7 +7,7 @@ class Template
 
     public $tpl_parts;
 
-    private $data = [];
+    private $_data = [];
     private $view;
 
     public function __construct($parts)
@@ -22,33 +22,33 @@ class Template
 
     public function setAppData($data)
     {
-        $this->data = $data;
+        $this->_data = $data;
     }
 
     private function tpl_start()
     {
-        extract($this->data);
+        extract($this->_data);
         require TEMPLATE_PATH . 'tpl_start.php';
     }
 
     private function tpl_end()
     {
-        extract($this->data);
+        extract($this->_data);
         require TEMPLATE_PATH . 'tpl_end.php';
     }
 
     private function startBody()
     {
-        extract($this->data);
+        extract($this->_data);
         require TEMPLATE_PATH . 'b_start.php';
     }
 
-    public function renderTempalte()
+    public function renderTemplate()
     {
         $tpl = $this->tpl_parts['tpl'];
         if ($tpl != '') {
             foreach ($tpl as $tp => $path) {
-                extract($this->data);
+
                 if ($tp === ':view') {
                     if (file_exists($this->view)) {
                         require $this->view;
@@ -56,6 +56,7 @@ class Template
                 } else {
                     require $path;
                 }
+                extract($this->_data);
             }
         }
     }
@@ -103,7 +104,7 @@ class Template
         $this->tpl_start();
         echo $this->renderHeader();
         $this->startBody();
-        $this->renderTempalte();
+        $this->renderTemplate();
         echo $this->renderFooter();
         $this->tpl_end();
         ob_get_contents();
