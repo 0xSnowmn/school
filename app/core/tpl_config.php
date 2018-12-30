@@ -1,6 +1,4 @@
 <?php
-
-
 return [
     'tpl' => [
         'w_start' => TEMPLATE_PATH . 'w_start.php',
@@ -11,10 +9,9 @@ return [
     ],
     'H_srcs' => [
         'CSS' => [
-            'norm' => CSS . 'normlize.css',
-            'fawsome' => CSS . 'fawsome.min.css',
-            'google' => CSS . 'googleicons.css',
-            'main' => CSS . 'mainen.css'
+            'norm' => CSS . 'bootstrap.min.css',
+            'fawsome' => CSS . 'animate.min.css',
+            'google' => CSS . 'paper-dashboard.css',
         ],
         'JS' => [
             'modi' => JS . 'vendor/m.js'
@@ -23,9 +20,11 @@ return [
 
     'F_srcs' => [
         'Jq' => JS . 'vendor/jq.js',
-        'helper' => JS . 'helper.js',
-        'datatable' => JS . 'datatablesen.js',
-        'main' => JS . 'main.js',
+        'helper' => JS . 'bootstrap.min.js',
+        'datatable' => JS . 'bootstrap-checkbox-radio.js',
+        'main' => JS . 'chartist.min.js',
+        'vue' => JS . 'bootstrap-notify.js',
+        'vue-router' => 'paper-dashboard.js',
     ]
 
 ];

@@ -1,23 +1,66 @@
-<header class="main">
-    <a href="javascript:;" class="menu_switch opened no_animation"><i class="fa fa-bars"></i></a>
-    <h1><?= @$text_dashboard ?>
-        <?php if (null !==@$title): ?>
-            <?= ' > ' . @$title ?>
-        <?php endif; ?>
-    </h1>
-    <div class="user_menu_container">
-        <a href="javascript:;" class="language_switch user">
-            <span><?= @$text_welcome ?> <?= @$this->session->u->Username ?></span>
-            <i class="material-icons">keyboard_arrow_down</i>
-        </a>
-        <ul class="user_menu">
-            <li><a href="/"><i class="fa fa-user"></i><?= @$text_profile ?></a></li>
-            <li><a href="/"><i class="fa fa-key"></i><?= @$text_change_password ?></a></li>
-            <li><a href="/"><i class="fa fa-gear"></i><?= @$text_account_settings ?></a></li>
-            <li><a href="/auth/logout"><i class="fa fa-sign-out"></i><?= @$text_log_out ?></a></li>
-        </ul>
+<div class="sidebar" data-background-color="white" data-active-color="danger">
+
+    <!--
+		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+	-->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="http://www.creative-tim.com" class="simple-text">
+                    School System
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <a href="dashboard.html">
+                        <i class="ti-panel"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="user.html">
+                        <i class="ti-user"></i>
+                        <p>User Profile</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="table.html">
+                        <i class="ti-view-list-alt"></i>
+                        <p>Table List</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="typography.html">
+                        <i class="ti-text"></i>
+                        <p>Typography</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="icons.html">
+                        <i class="ti-pencil-alt2"></i>
+                        <p>Icons</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="maps.html">
+                        <i class="ti-map"></i>
+                        <p>Maps</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="notifications.html">
+                        <i class="ti-bell"></i>
+                        <p>Notifications</p>
+                    </a>
+                </li>
+				<li class="active-pro">
+                    <a href="upgrade.html">
+                        <i class="ti-export"></i>
+                        <p>Upgrade to PRO</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
     </div>
-    <a href="/messages" class="language_switch"><i class="fa fa-envelope"></i></a>
-    <a href="javascript:;" class="language_switch notifications"><i class="fa fa-bell"></i></a>
-    <a href="/language" class="language_switch"><span><?= @$_SESSION['lang'] == 'ar' ? 'En' : 'عربي' ?></span> <i class="fa fa-globe"></i></a>
-</header>
