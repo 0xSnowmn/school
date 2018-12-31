@@ -13,7 +13,6 @@
                                         <div class="numbers">
                                             <p>Capacity</p>
                                             105GB
-                                            <? ?>
                                         </div>
                                     </div>
                                 </div>

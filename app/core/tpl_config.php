@@ -12,6 +12,7 @@ return [
             'norm' => CSS . 'bootstrap.min.css',
             'fawsome' => CSS . 'animate.min.css',
             'google' => CSS . 'paper-dashboard.css',
+            'mycss' => CSS . 'mycss.css'
         ],
         'JS' => [
             'modi' => JS . 'vendor/m.js'

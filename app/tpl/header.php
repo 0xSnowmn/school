@@ -1,5 +1,5 @@
 <div class="sidebar" data-background-color="white" data-active-color="danger">
-
+<a href="/language">Change</a>
     <!--
 		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
 		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
@@ -9,6 +9,8 @@
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
                     School System
+                    <a href="/language">Change</a>
+
                 </a>
             </div>
 
@@ -20,7 +22,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="user.html">
+                    <a href="/user/profile">
                         <i class="ti-user"></i>
                         <p>User Profile</p>
                     </a>

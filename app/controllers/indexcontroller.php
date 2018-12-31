@@ -5,15 +5,12 @@ class IndexController extends AbstractController
 {
     public function defaultAction()
     {
+        $this->language->load('index+default');
         $this->view();
     }
 
     public function addAction()
     {
         $this->view();
-        $this->_data['hello'] = 'hello You';
-        extract($this->_data);
-        var_dump($hello);
-
     }
 }

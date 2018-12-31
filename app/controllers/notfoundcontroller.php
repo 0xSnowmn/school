@@ -5,6 +5,7 @@ class NotFoundController extends AbstractController
 {
     public function notFoundAction()
     {
-        echo 'Not Found';
+        $this->_tpl->editTpl([':view' => ':vie']);
+        $this->view();
     }
 }

@@ -6,13 +6,13 @@ use School\Core\FrontController;
 
 class AbstractController
 {
-    private $_controller;
-    private $_action;
-    private $_params;
+    protected $_controller;
+    protected $_action;
+    protected $_params;
+    protected $data = [];
 
-    protected $_data = [];
     protected $_tpl;
-
+    protected $language;
 
     public function setController($controller)
     {
@@ -32,6 +32,10 @@ class AbstractController
         $this->_tpl = $tpl;
     }
 
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+    }
 
     public function view()
     {
@@ -39,9 +43,9 @@ class AbstractController
         if ($this->_action == FrontController::NOT_FOUND_ACTION || !file_exists($viewPath)) {
             $viewPath = VIEW_PATH . 'notfound/noview.v.php';
         }
+        $this->data = array_merge($this->data, $this->language->getDictionary());
         $this->_tpl->setView($viewPath);
-        $this->_tpl->setAppData($this->_data);
-        extract($this->_data);
+        $this->_tpl->setData($this->data);
         $this->_tpl->render();
     }
 }

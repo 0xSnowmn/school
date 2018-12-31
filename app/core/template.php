@@ -5,10 +5,11 @@ namespace School\Core;
 class Template
 {
 
-    public $tpl_parts;
+    protected $tpl_parts;
 
-    private $_data = [];
-    private $view;
+    protected $view;
+    protected $data;
+
 
     public function __construct($parts)
     {
@@ -20,26 +21,31 @@ class Template
         $this->view = $view;
     }
 
-    public function setAppData($data)
+    public function setData($dat)
     {
-        $this->_data = $data;
+        $this->data = $dat;
+    }
+
+    public function EditTpl($edit)
+    {
+        $this->tpl_parts['tpl'] = $edit;
     }
 
     private function tpl_start()
     {
-        extract($this->_data);
+        extract($this->data);
         require TEMPLATE_PATH . 'tpl_start.php';
     }
 
     private function tpl_end()
     {
-        extract($this->_data);
+        extract($this->data);
         require TEMPLATE_PATH . 'tpl_end.php';
     }
 
     private function startBody()
     {
-        extract($this->_data);
+        extract($this->data);
         require TEMPLATE_PATH . 'b_start.php';
     }
 
@@ -47,8 +53,8 @@ class Template
     {
         $tpl = $this->tpl_parts['tpl'];
         if ($tpl != '') {
+            extract($this->data);
             foreach ($tpl as $tp => $path) {
-
                 if ($tp === ':view') {
                     if (file_exists($this->view)) {
                         require $this->view;
@@ -56,7 +62,6 @@ class Template
                 } else {
                     require $path;
                 }
-                extract($this->_data);
             }
         }
     }
@@ -88,7 +93,7 @@ class Template
     public function renderFooter()
     {
         $output = '';
-        $footer = $this->tpl_parts['F_srcs'];
+        @$footer = $this->tpl_parts['F_srcs'];
         if ($footer != '') {
             foreach ($footer as $key => $path) {
                 $output .= '<script src="' . $path . '"></script>';
