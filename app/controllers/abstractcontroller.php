@@ -12,7 +12,12 @@ class AbstractController
     protected $data = [];
 
     protected $_tpl;
-    protected $language;
+    protected $registry;
+
+    public function __get($key)
+    {
+        return $this->registry->$key;
+    }
 
     public function setController($controller)
     {
@@ -32,9 +37,9 @@ class AbstractController
         $this->_tpl = $tpl;
     }
 
-    public function setLanguage($language)
+    public function setRegistry($registry)
     {
-        $this->language = $language;
+        $this->registry = $registry;
     }
 
     public function view()

@@ -4,17 +4,24 @@ namespace School;
 use School\Core\FrontController;
 use School\Core\Template;
 use School\Core\Language;
+use School\Core\Registry;
+use School\Core\appSession;
 
 
 require '../app/core/config.php';
 require APP_PATH . '/core/autoload.php';
 
-if (!isset($_SESSION['lang'])) {
-    $_SESSION['lang'] = 'ar';
+$session = new appSession();
+$session->start();
+if (!isset($session->lang)) {
+    $session->lang = DEFAULT_LANGUAGE;
 }
 
 $parts = require APP_PATH . '/core/tpl_config.php';
 $template = new Template($parts);
 $language = new Language();
-$frontController = new FrontController($template, $language);
+$registry = Registry::getInstance();
+$registry->language = $language;
+$registry->session = $session;
+$frontController = new FrontController($template, $registry);
 $frontController->dispatch();

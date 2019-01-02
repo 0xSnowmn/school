@@ -20,12 +20,13 @@ return [
     ],
 
     'F_srcs' => [
-        'Jq' => JS . 'vendor/jq.js',
+        'Jq' => JS . 'jq.js',
         'helper' => JS . 'bootstrap.min.js',
         'datatable' => JS . 'bootstrap-checkbox-radio.js',
         'main' => JS . 'chartist.min.js',
         'vue' => JS . 'bootstrap-notify.js',
         'vue-router' => 'paper-dashboard.js',
+        'js' => JS . 'main.js',
     ]
 
 ];

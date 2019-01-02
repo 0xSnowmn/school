@@ -14,8 +14,7 @@ class Language
         }
         $path = str_replace('+', '/', $path);
         $path = strtolower($path);
-        $path = LANGUAGE_PATH . $defaultLanguage . $path . '.lang.php';
-        var_dump($path);
+        $path = LANGUAGE_PATH . $defaultLanguage . '/' . $path . '.lang.php';
         if (file_exists($path)) {
             require $path;
             if (is_array($_) && !empty($_)) {

@@ -11,12 +11,12 @@ class FrontController
     protected $_params = [];
 
     private $tpl;
-    private $language;
+    private $registry;
 
-    public function __construct(Template $tpl, Language $language)
+    public function __construct(Template $tpl, Registry $registry)
     {
         $this->tpl = $tpl;
-        $this->language = $language;
+        $this->registry = $registry;
         $this->url();
     }
 
@@ -48,7 +48,7 @@ class FrontController
 
         $controller = new $controlelrClassName();
         $controller->setTemplate($this->tpl);
-        $controller->setLanguage($this->language);
+        $controller->setRegistry($this->registry);
         $controller->setController($this->_controller);
         $controller->setAction($this->_action);
         $controller->setParams($this->_params);
