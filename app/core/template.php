@@ -9,6 +9,7 @@ class Template
 
     protected $view;
     protected $data;
+    protected $registry;
 
 
     public function __construct($parts)
@@ -21,9 +22,19 @@ class Template
         $this->view = $view;
     }
 
+    public function __get($key)
+    {
+        return $this->registry->$key;
+    }
+
     public function setData($dat)
     {
         $this->data = $dat;
+    }
+
+    public function setRegistry($registry)
+    {
+        $this->registry = $registry;
     }
 
     public function EditTpl($edit)
@@ -66,51 +77,12 @@ class Template
         }
     }
 
-    public function renderHeader()
-    {
-        $output = '';
-        $header = $this->tpl_parts['H_srcs'];
-        if ($header != '') {
-            // Css
-            $css = $header['CSS'];
-            if ($css != '') {
-                foreach ($css as $key => $path) {
-                    $output .= '<link rel="stylesheet" href="' . $path . '">';
-                }
-            }
-            // Js
-            $js = $header['JS'];
-            if ($js != '') {
-                foreach ($js as $key => $path) {
-                    $output .= '<script src="' . $path . '"></script>';
-                }
-            }
-        }
-
-        return $output;
-    }
-
-    public function renderFooter()
-    {
-        $output = '';
-        @$footer = $this->tpl_parts['F_srcs'];
-        if ($footer != '') {
-            foreach ($footer as $key => $path) {
-                $output .= '<script src="' . $path . '"></script>';
-            }
-        }
-
-        return $output;
-    }
-
     public function render()
     {
         ob_start();
         $this->tpl_start();
-        echo $this->renderHeader();
         $this->startBody();
         $this->renderTemplate();
-        echo $this->renderFooter();
         $this->tpl_end();
         ob_get_contents();
         ob_flush();

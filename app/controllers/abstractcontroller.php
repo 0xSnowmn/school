@@ -51,6 +51,7 @@ class AbstractController
         $this->data = array_merge($this->data, $this->language->getDictionary());
         $this->_tpl->setView($viewPath);
         $this->_tpl->setData($this->data);
+        $this->_tpl->setRegistry($this->registry);
         $this->_tpl->render();
     }
 }
